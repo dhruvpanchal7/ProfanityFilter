@@ -1,0 +1,17 @@
+1. Profanity Detection in a Facebook post.
+
+This is our final Project 
+
+Proposal:
+There are many kinds of barriers people are facing on socialmedia and Facebook is no exception. 
+Harsh words and abusive language are one of these barriers. 
+So, we are going to create a simple prototype for detecting and removing this barrier.
+
+
+
+Steps and models included:
+On the first stage, we have decided to divide our prototype into 4 stages.
+1) Create simple scraper to scrape Facebook post.(text data Only).
+2) Apply pre-processing tasks to clean that data.
+3) Create profanity algorithm to detect violation (Using NLP algorithm).
+4) Merge scraped data to our algorithm.
