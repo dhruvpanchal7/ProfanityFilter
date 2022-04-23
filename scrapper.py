@@ -1,6 +1,7 @@
  
 import requests
 from bs4 import BeautifulSoup
+from flask import Flask, render_template,request
 
 class FaceBookBot :
     login_basic_url = 'https://mbasic.facebook.com/login'
@@ -16,7 +17,6 @@ class FaceBookBot :
         return parsed_html
 
     def post_content(self,post_id,url):
-        print()
         self.post_ID = int(post_id)
        
         #REQUEST_URL = f'https://mbasic.facebook.com/Treyarch/photos/a.10150344869682724/10158037864662724'
@@ -25,14 +25,15 @@ class FaceBookBot :
 
         soup = BeautifulSoup(self.parse_html(REQUEST_URL).content, "html.parser")
         content = soup.find_all('div', class_ = "_2vj8")
-        post_content = []
+        post_content1 = []
         for lines in content:
-            post_content.append(lines.text)
+            post_content1.append(lines.text)
         
-        post_content = ' '.join(post_content)    
+        post_content1 = ' '.join(post_content1)    
         
-        print(post_content)
-        #return post_content
+        # print(post_content)
+        return post_content1
+        #return render_template('result_page.html', result="scaraper")
 
     
 #bot = FaceBookBot()

@@ -100,20 +100,48 @@
 
 import spacy
 from profanity_filter import ProfanityFilter
+#import en_core_web_sm
 
-nlp = spacy.load('en')
 
-doc._.is_profane
+class detection():
+      
+      #nlp = spacy.load("en_core_web_lg")
+      #nlp = spacy.load('en')
+      #nlp = en_core_web_sm.load()
 
-text = "scrapped text"
-profanity_filter = ProfanityFilter(nlps={'en': nlp})
-nlp.add_pipe(profanity_filter.spacy_component, last=True)
+      def profanity(text):
+      #text = "scrapped text"
+            tokenn=[]
+            censored=[]
+            profane=[]
+            original_profane=[]
+            nlp = spacy.load('en')
 
-doc = nlp(text)
-
-for token in doc:
-    print(f'{token}: '
-          f'censored={token._.censored}, '
-          "\n"f'is_profane={token._.is_profane}, '
-          f'original_profane_word={token._.original_profane_word}'
-    )
+            profanity_filter = ProfanityFilter(nlps={'en': nlp})
+            nlp.add_pipe(profanity_filter.spacy_component, last=True)
+            counter = 0
+            doc = nlp(text)
+            doc._.is_profane      
+            for token in doc:
+                  tokenn.append(token)
+                  censored.append(token._.censored)
+                  profane.append(token._.is_profane)
+                  original_profane.append(token._.original_profane_word)
+            for i in profane:
+                  print(i)
+                  if i == True:
+                        return True
+                  else:
+                        counter += 1
+            if counter > 0:
+                  return False            
+            # return (f'{token}: '
+            #             f'censored={censored}, '
+            #             "\n"f'is_profane={profane}, '
+            #             f'original_profane_word={original_profane}'    
+            #       )        
+                  #  return (f'{token}: '
+                  #       f'censored={token._.censored}, '
+                  #       "\n"f'is_profane={token._.is_profane}, '
+                  #       f'original_profane_word={token._.original_profane_word}'    
+                  # )        
