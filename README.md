@@ -1,3 +1,3 @@
 # ProfanityFilter
 
-We are building a Profanity Filter for Facebooko Posts.
+This shows if there is any Profanity present in facebook Posts.
